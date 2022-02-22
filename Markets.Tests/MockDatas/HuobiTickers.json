@@ -1,0 +1,976 @@
+{
+    "status": "ok",
+    "data": [
+        {
+            "volume": 79797.000000000000000000,
+            "amount": 797970.000000000000000000,
+            "symbol": "MANA",
+            "value": 509823.033000000000000000,
+            "contract_code": "MANA-USDT",
+            "trade_amount": 6370280,
+            "trade_volume": 637028,
+            "trade_turnover": 4063998.436
+        },
+        {
+            "volume": 1397811.000000000000000000,
+            "amount": 13978110.000000000000000000,
+            "symbol": "CHZ",
+            "value": 4043168.317500000000000000,
+            "contract_code": "CHZ-USDT",
+            "trade_amount": 331894460,
+            "trade_volume": 33189446,
+            "trade_turnover": 96606837.569
+        },
+        {
+            "volume": 1030490.000000000000000000,
+            "amount": 1030490.000000000000000000,
+            "symbol": "DOT",
+            "value": 21351649.751000000000000000,
+            "contract_code": "DOT-USDT",
+            "trade_amount": 21646696,
+            "trade_volume": 21646696,
+            "trade_turnover": 454241603.3594
+        },
+        {
+            "volume": 103543.000000000000000000,
+            "amount": 103543.000000000000000000,
+            "symbol": "KNC",
+            "value": 184710.357700000000000000,
+            "contract_code": "KNC-USDT",
+            "trade_amount": 396450,
+            "trade_volume": 396450,
+            "trade_turnover": 706610.349
+        },
+        {
+            "volume": 2945904.000000000000000000,
+            "amount": 2945904.000000000000000000,
+            "symbol": "EOS",
+            "value": 13450703.073600000000000000,
+            "contract_code": "EOS-USDT",
+            "trade_amount": 58406266,
+            "trade_volume": 58406266,
+            "trade_turnover": 266430799.6394
+        },
+        {
+            "volume": 273437.000000000000000000,
+            "amount": 273437.000000000000000000,
+            "symbol": "XTZ",
+            "value": 849732.821200000000000000,
+            "contract_code": "XTZ-USDT",
+            "trade_amount": 3828200,
+            "trade_volume": 3828200,
+            "trade_turnover": 11862317.4008
+        },
+        {
+            "volume": 47173.000000000000000000,
+            "amount": 471730.000000000000000000,
+            "symbol": "CVC",
+            "value": 111611.318000000000000000,
+            "contract_code": "CVC-USDT",
+            "trade_amount": 3388920,
+            "trade_volume": 338892,
+            "trade_turnover": 794622.7076
+        },
+        {
+            "volume": 125183.000000000000000000,
+            "amount": 125183.000000000000000000,
+            "symbol": "LUNA",
+            "value": 724346.392900000000000000,
+            "contract_code": "LUNA-USDT",
+            "trade_amount": 2908668,
+            "trade_volume": 2908668,
+            "trade_turnover": 16932811.8304
+        },
+        {
+            "volume": 249779.000000000000000000,
+            "amount": 2497790.000000000000000000,
+            "symbol": "GRT",
+            "value": 1521403.889000000000000000,
+            "contract_code": "GRT-USDT",
+            "trade_amount": 44267840,
+            "trade_volume": 4426784,
+            "trade_turnover": 27037523.9746
+        },
+        {
+            "volume": 452937.000000000000000000,
+            "amount": 452937.000000000000000000,
+            "symbol": "PHA",
+            "value": 382623.060120000000000000,
+            "contract_code": "PHA-USDT",
+            "trade_amount": 957808,
+            "trade_volume": 957808,
+            "trade_turnover": 819495.69474
+        },
+        {
+            "volume": 113452.000000000000000000,
+            "amount": 1134520.000000000000000000,
+            "symbol": "SKL",
+            "value": 314920.061600000000000000,
+            "contract_code": "SKL-USDT",
+            "trade_amount": 11789340,
+            "trade_volume": 1178934,
+            "trade_turnover": 3282891.9792
+        },
+        {
+            "volume": 226121.000000000000000000,
+            "amount": 2261210.000000000000000000,
+            "symbol": "RVN",
+            "value": 150845.319100000000000000,
+            "contract_code": "RVN-USDT",
+            "trade_amount": 15138640,
+            "trade_volume": 1513864,
+            "trade_turnover": 1017095.7242
+        },
+        {
+            "volume": 262482.000000000000000000,
+            "amount": 2624820.000000000000000000,
+            "symbol": "XEM",
+            "value": 392673.072000000000000000,
+            "contract_code": "XEM-USDT",
+            "trade_amount": 16137440,
+            "trade_volume": 1613744,
+            "trade_turnover": 2421922.294
+        },
+        {
+            "volume": 216559.000000000000000000,
+            "amount": 21655900.000000000000000000,
+            "symbol": "IOST",
+            "value": 545079.003000000000000000,
+            "contract_code": "IOST-USDT",
+            "trade_amount": 270438400,
+            "trade_volume": 2704384,
+            "trade_turnover": 6811811.59
+        },
+        {
+            "volume": 47956.000000000000000000,
+            "amount": 479560.000000000000000000,
+            "symbol": "REN",
+            "value": 201654.980000000000000000,
+            "contract_code": "REN-USDT",
+            "trade_amount": 2272000,
+            "trade_volume": 227200,
+            "trade_turnover": 940994.768
+        },
+        {
+            "volume": 412467.000000000000000000,
+            "amount": 4124670.000000000000000000,
+            "symbol": "IOTA",
+            "value": 3961333.068000000000000000,
+            "contract_code": "IOTA-USDT",
+            "trade_amount": 4790260,
+            "trade_volume": 479026,
+            "trade_turnover": 4676498.494
+        },
+        {
+            "volume": 104374.000000000000000000,
+            "amount": 10437.400000000000000000,
+            "symbol": "KSM",
+            "value": 3201651.575200000000000000,
+            "contract_code": "KSM-USDT",
+            "trade_amount": 224089.8,
+            "trade_volume": 2240898,
+            "trade_turnover": 69693965.6592
+        },
+        {
+            "volume": 7853028.000000000000000000,
+            "amount": 78530.280000000000000000,
+            "symbol": "ICP",
+            "value": 3997976.554800000000000000,
+            "contract_code": "ICP-USDT",
+            "trade_amount": 1803657.38,
+            "trade_volume": 180365738,
+            "trade_turnover": 90206326.2618
+        },
+        {
+            "volume": 11182846.000000000000000000,
+            "amount": 111828.460000000000000000,
+            "symbol": "ETH",
+            "value": 248875356.014600000000000000,
+            "contract_code": "ETH-USDT",
+            "trade_amount": 3109398.76,
+            "trade_volume": 310939876,
+            "trade_turnover": 6886554078.518
+        },
+        {
+            "volume": 406872.000000000000000000,
+            "amount": 406872.000000000000000000,
+            "symbol": "STORJ",
+            "value": 354344.824800000000000000,
+            "contract_code": "STORJ-USDT",
+            "trade_amount": 4640290,
+            "trade_volume": 4640290,
+            "trade_turnover": 3925561.0304
+        },
+        {
+            "volume": 2872164.000000000000000000,
+            "amount": 28721.640000000000000000,
+            "symbol": "BAGS",
+            "value": 1980931.510800000000000000,
+            "contract_code": "BAGS-USDT",
+            "trade_amount": 190472.28,
+            "trade_volume": 19047228,
+            "trade_turnover": 12760382.4038
+        },
+        {
+            "volume": 125721.000000000000000000,
+            "amount": 125721.000000000000000000,
+            "symbol": "QTUM",
+            "value": 984018.267000000000000000,
+            "contract_code": "QTUM-USDT",
+            "trade_amount": 1201052,
+            "trade_volume": 1201052,
+            "trade_turnover": 9481587.76
+        },
+        {
+            "volume": 5686945.000000000000000000,
+            "amount": 56869.450000000000000000,
+            "symbol": "BSV",
+            "value": 8933621.900500000000000000,
+            "contract_code": "BSV-USDT",
+            "trade_amount": 278551.12,
+            "trade_volume": 27855112,
+            "trade_turnover": 43550287.7224
+        },
+        {
+            "volume": 7583894.000000000000000000,
+            "amount": 7583.894000000000000000,
+            "symbol": "BTC",
+            "value": 270847398.369000000000000000,
+            "contract_code": "BTC-USDT",
+            "trade_amount": 260668.32,
+            "trade_volume": 260668320,
+            "trade_turnover": 9297246960.2852
+        },
+        {
+            "volume": 5697283.000000000000000000,
+            "amount": 5697283.000000000000000000,
+            "symbol": "CSPR",
+            "value": 1775273.382800000000000000,
+            "contract_code": "CSPR-USDT",
+            "trade_amount": 108942710,
+            "trade_volume": 108942710,
+            "trade_turnover": 32954730.5444
+        },
+        {
+            "volume": 131142.000000000000000000,
+            "amount": 1311420.000000000000000000,
+            "symbol": "WOO",
+            "value": 1272024.943200000000000000,
+            "contract_code": "WOO-USDT",
+            "trade_amount": 14019360,
+            "trade_volume": 1401936,
+            "trade_turnover": 12995064.5176
+        },
+        {
+            "volume": 465270.000000000000000000,
+            "amount": 4652.700000000000000000,
+            "symbol": "XMR",
+            "value": 1277119.623000000000000000,
+            "contract_code": "XMR-USDT",
+            "trade_amount": 66361.52,
+            "trade_volume": 6636152,
+            "trade_turnover": 17974812.4414
+        },
+        {
+            "volume": 119567.000000000000000000,
+            "amount": 11956.700000000000000000,
+            "symbol": "ZEN",
+            "value": 970884.040000000000000000,
+            "contract_code": "ZEN-USDT",
+            "trade_amount": 158315.2,
+            "trade_volume": 1583152,
+            "trade_turnover": 12751516.89
+        },
+        {
+            "volume": 1618201.000000000000000000,
+            "amount": 1618201.000000000000000000,
+            "symbol": "MASS",
+            "value": 769940.035800000000000000,
+            "contract_code": "MASS-USDT",
+            "trade_amount": 43056306,
+            "trade_volume": 43056306,
+            "trade_turnover": 19593778.6996
+        },
+        {
+            "volume": 551055.000000000000000000,
+            "amount": 5510550.000000000000000000,
+            "symbol": "LINA",
+            "value": 166694.137500000000000000,
+            "contract_code": "LINA-USDT",
+            "trade_amount": 76526300,
+            "trade_volume": 7652630,
+            "trade_turnover": 2339407.5404
+        },
+        {
+            "volume": 221280.000000000000000000,
+            "amount": 221280.000000000000000000,
+            "symbol": "ETC",
+            "value": 11451062.976000000000000000,
+            "contract_code": "ETC-USDT",
+            "trade_amount": 3217906,
+            "trade_volume": 3217906,
+            "trade_turnover": 167530829.2324
+        },
+        {
+            "volume": 198958.000000000000000000,
+            "amount": 198958.000000000000000000,
+            "symbol": "OMG",
+            "value": 911983.680400000000000000,
+            "contract_code": "OMG-USDT",
+            "trade_amount": 3301258,
+            "trade_volume": 3301258,
+            "trade_turnover": 15274953.8406
+        },
+        {
+            "volume": 171942.000000000000000000,
+            "amount": 17194200.000000000000000000,
+            "symbol": "VET",
+            "value": 1702363.353600000000000000,
+            "contract_code": "VET-USDT",
+            "trade_amount": 168565600,
+            "trade_volume": 1685656,
+            "trade_turnover": 16725492.3082
+        },
+        {
+            "volume": 1274001.000000000000000000,
+            "amount": 12740.010000000000000000,
+            "symbol": "BCH",
+            "value": 7229700.874800000000000000,
+            "contract_code": "BCH-USDT",
+            "trade_amount": 216993.54,
+            "trade_volume": 21699354,
+            "trade_turnover": 122237632.0452
+        },
+        {
+            "volume": 73151.000000000000000000,
+            "amount": 7315.100000000000000000,
+            "symbol": "BAL",
+            "value": 142424.997000000000000000,
+            "contract_code": "BAL-USDT",
+            "trade_amount": 16271.6,
+            "trade_volume": 162716,
+            "trade_turnover": 318171.73
+        },
+        {
+            "volume": 75095.000000000000000000,
+            "amount": 7509500.000000000000000000,
+            "symbol": "AKRO",
+            "value": 159952.350000000000000000,
+            "contract_code": "AKRO-USDT",
+            "trade_amount": 63601000,
+            "trade_volume": 636010,
+            "trade_turnover": 1352846.37
+        },
+        {
+            "volume": 51487.000000000000000000,
+            "amount": 5148700.000000000000000000,
+            "symbol": "ZIL",
+            "value": 488302.708000000000000000,
+            "contract_code": "ZIL-USDT",
+            "trade_amount": 83626200,
+            "trade_volume": 836262,
+            "trade_turnover": 8011136.318
+        },
+        {
+            "volume": 279522.000000000000000000,
+            "amount": 279522.000000000000000000,
+            "symbol": "KAVA",
+            "value": 1086166.587600000000000000,
+            "contract_code": "KAVA-USDT",
+            "trade_amount": 2142720,
+            "trade_volume": 2142720,
+            "trade_turnover": 8194196.3206
+        },
+        {
+            "volume": 350788.000000000000000000,
+            "amount": 3507.880000000000000000,
+            "symbol": "COMP",
+            "value": 975050.324800000000000000,
+            "contract_code": "COMP-USDT",
+            "trade_amount": 40345.68,
+            "trade_volume": 4034568,
+            "trade_turnover": 11150307.5232
+        },
+        {
+            "volume": 30673.000000000000000000,
+            "amount": 3067300.000000000000000000,
+            "symbol": "BTS",
+            "value": 150604.430000000000000000,
+            "contract_code": "BTS-USDT",
+            "trade_amount": 27712400,
+            "trade_volume": 277124,
+            "trade_turnover": 1341429.106
+        },
+        {
+            "volume": 105226.000000000000000000,
+            "amount": 1052260.000000000000000000,
+            "symbol": "ALGO",
+            "value": 1004508.441200000000000000,
+            "contract_code": "ALGO-USDT",
+            "trade_amount": 14560400,
+            "trade_volume": 1456040,
+            "trade_turnover": 14140294.4314
+        },
+        {
+            "volume": 49486.000000000000000000,
+            "amount": 49486.000000000000000000,
+            "symbol": "WAVES",
+            "value": 810194.689200000000000000,
+            "contract_code": "WAVES-USDT",
+            "trade_amount": 1760086,
+            "trade_volume": 1760086,
+            "trade_turnover": 28405419.4988
+        },
+        {
+            "volume": 316365.000000000000000000,
+            "amount": 316365.000000000000000000,
+            "symbol": "FRONT",
+            "value": 230630.085000000000000000,
+            "contract_code": "FRONT-USDT",
+            "trade_amount": 1562280,
+            "trade_volume": 1562280,
+            "trade_turnover": 1112027.5724
+        },
+        {
+            "volume": 775078.000000000000000000,
+            "amount": 77507800.000000000000000000,
+            "symbol": "TRX",
+            "value": 5377878.703000000000000000,
+            "contract_code": "TRX-USDT",
+            "trade_amount": 1679185400,
+            "trade_volume": 16791854,
+            "trade_turnover": 116298568.6032
+        },
+        {
+            "volume": 60065.000000000000000000,
+            "amount": 600650.000000000000000000,
+            "symbol": "LRC",
+            "value": 162361.701500000000000000,
+            "contract_code": "LRC-USDT",
+            "trade_amount": 3057820,
+            "trade_volume": 305782,
+            "trade_turnover": 820095.1232
+        },
+        {
+            "volume": 117359.000000000000000000,
+            "amount": 11735.900000000000000000,
+            "symbol": "DASH",
+            "value": 1806155.010000000000000000,
+            "contract_code": "DASH-USDT",
+            "trade_amount": 405906.8,
+            "trade_volume": 4059068,
+            "trade_turnover": 63116304.942
+        },
+        {
+            "volume": 108749.000000000000000000,
+            "amount": 10874900.000000000000000000,
+            "symbol": "REEF",
+            "value": 209602.822600000000000000,
+            "contract_code": "REEF-USDT",
+            "trade_amount": 175941800,
+            "trade_volume": 1759418,
+            "trade_turnover": 3393973.347
+        },
+        {
+            "volume": 156296.000000000000000000,
+            "amount": 1562960.000000000000000000,
+            "symbol": "ANKR",
+            "value": 113627.192000000000000000,
+            "contract_code": "ANKR-USDT",
+            "trade_amount": 10838700,
+            "trade_volume": 1083870,
+            "trade_turnover": 788986.0938
+        },
+        {
+            "volume": 90378.000000000000000000,
+            "amount": 903780.000000000000000000,
+            "symbol": "SAND",
+            "value": 223664.763060000000000000,
+            "contract_code": "SAND-USDT",
+            "trade_amount": 4912280,
+            "trade_volume": 491228,
+            "trade_turnover": 1226050.77914
+        },
+        {
+            "volume": 175162.000000000000000000,
+            "amount": 1751620.000000000000000000,
+            "symbol": "LAT",
+            "value": 668120.416600000000000000,
+            "contract_code": "LAT-USDT",
+            "trade_amount": 59350480,
+            "trade_volume": 5935048,
+            "trade_turnover": 24629532.1742
+        },
+        {
+            "volume": 1172675.000000000000000000,
+            "amount": 11726750.000000000000000000,
+            "symbol": "ADA",
+            "value": 16471217.148750000000000000,
+            "contract_code": "ADA-USDT",
+            "trade_amount": 133697220,
+            "trade_volume": 13369722,
+            "trade_turnover": 188807463.64378
+        },
+        {
+            "volume": 907564137.000000000000000000,
+            "amount": 907564137000.000000000000000000,
+            "symbol": "SHIB",
+            "value": 6815806.668870000000000000,
+            "contract_code": "SHIB-USDT",
+            "trade_amount": 37605886576000,
+            "trade_volume": 37605886576,
+            "trade_turnover": 288181736.64104
+        },
+        {
+            "volume": 435338.000000000000000000,
+            "amount": 435338.000000000000000000,
+            "symbol": "ENJ",
+            "value": 545391.446400000000000000,
+            "contract_code": "ENJ-USDT",
+            "trade_amount": 6606606,
+            "trade_volume": 6606606,
+            "trade_turnover": 8336916.2598
+        },
+        {
+            "volume": 175625.000000000000000000,
+            "amount": 1756250.000000000000000000,
+            "symbol": "CRO",
+            "value": 191080.000000000000000000,
+            "contract_code": "CRO-USDT",
+            "trade_amount": 3531440,
+            "trade_volume": 353144,
+            "trade_turnover": 377358.565
+        },
+        {
+            "volume": 96526.000000000000000000,
+            "amount": 96526.000000000000000000,
+            "symbol": "SOL",
+            "value": 3449491.746400000000000000,
+            "contract_code": "SOL-USDT",
+            "trade_amount": 1896358,
+            "trade_volume": 1896358,
+            "trade_turnover": 68402851.4274
+        },
+        {
+            "volume": 826847.000000000000000000,
+            "amount": 82.684700000000000000,
+            "symbol": "YFI",
+            "value": 2827626.565190000000000000,
+            "contract_code": "YFI-USDT",
+            "trade_amount": 755.2568,
+            "trade_volume": 7552568,
+            "trade_turnover": 25532851.80544
+        },
+        {
+            "volume": 312278.000000000000000000,
+            "amount": 312278.000000000000000000,
+            "symbol": "UNI",
+            "value": 6383586.876000000000000000,
+            "contract_code": "UNI-USDT",
+            "trade_amount": 3355144,
+            "trade_volume": 3355144,
+            "trade_turnover": 68115289.2594
+        },
+        {
+            "volume": 63783.000000000000000000,
+            "amount": 637830.000000000000000000,
+            "symbol": "BLZ",
+            "value": 111173.769000000000000000,
+            "contract_code": "BLZ-USDT",
+            "trade_amount": 5532280,
+            "trade_volume": 553228,
+            "trade_turnover": 961471.2566
+        },
+        {
+            "volume": 3209769.000000000000000000,
+            "amount": 320976.900000000000000000,
+            "symbol": "FIL",
+            "value": 21084330.607200000000000000,
+            "contract_code": "FIL-USDT",
+            "trade_amount": 2493670,
+            "trade_volume": 24936700,
+            "trade_turnover": 162814752.2998
+        },
+        {
+            "volume": 2502631.000000000000000000,
+            "amount": 2502.631000000000000000,
+            "symbol": "XCH",
+            "value": 973598.537930000000000000,
+            "contract_code": "XCH-USDT",
+            "trade_amount": 12960.72,
+            "trade_volume": 12960720,
+            "trade_turnover": 5121085.2241
+        },
+        {
+            "volume": 115128.000000000000000000,
+            "amount": 11512800.000000000000000000,
+            "symbol": "RSR",
+            "value": 329035.824000000000000000,
+            "contract_code": "RSR-USDT",
+            "trade_amount": 36041000,
+            "trade_volume": 360410,
+            "trade_turnover": 1011841.032
+        },
+        {
+            "volume": 1049412.000000000000000000,
+            "amount": 1049412.000000000000000000,
+            "symbol": "O3",
+            "value": 9703073.234400000000000000,
+            "contract_code": "O3-USDT",
+            "trade_amount": 82259348,
+            "trade_volume": 82259348,
+            "trade_turnover": 856750205.1998
+        },
+        {
+            "volume": 61864.000000000000000000,
+            "amount": 6186.400000000000000000,
+            "symbol": "AAVE",
+            "value": 1621028.578400000000000000,
+            "contract_code": "AAVE-USDT",
+            "trade_amount": 121698.4,
+            "trade_volume": 1216984,
+            "trade_turnover": 31948182.6372
+        },
+        {
+            "volume": 388918.000000000000000000,
+            "amount": 388918.000000000000000000,
+            "symbol": "1INCH",
+            "value": 1201989.970800000000000000,
+            "contract_code": "1INCH-USDT",
+            "trade_amount": 7277566,
+            "trade_volume": 7277566,
+            "trade_turnover": 22641324.4396
+        },
+        {
+            "volume": 98775.000000000000000000,
+            "amount": 9877500.000000000000000000,
+            "symbol": "MATIC",
+            "value": 13647346.650000000000000000,
+            "contract_code": "MATIC-USDT",
+            "trade_amount": 264626400,
+            "trade_volume": 2646264,
+            "trade_turnover": 364756227.624
+        },
+        {
+            "volume": 273251.000000000000000000,
+            "amount": 273251.000000000000000000,
+            "symbol": "OGN",
+            "value": 236990.592300000000000000,
+            "contract_code": "OGN-USDT",
+            "trade_amount": 6719360,
+            "trade_volume": 6719360,
+            "trade_turnover": 5681556.8158
+        },
+        {
+            "volume": 1685201.000000000000000000,
+            "amount": 168520100.000000000000000000,
+            "symbol": "DOGE",
+            "value": 48866278.957300000000000000,
+            "contract_code": "DOGE-USDT",
+            "trade_amount": 2271240600,
+            "trade_volume": 22712406,
+            "trade_turnover": 660149676.1846
+        },
+        {
+            "volume": 41999518.000000000000000000,
+            "amount": 4199951.800000000000000000,
+            "symbol": "ZKS",
+            "value": 6145369.473760000000000000,
+            "contract_code": "ZKS-USDT",
+            "trade_amount": 312256138.6,
+            "trade_volume": 3122561386,
+            "trade_turnover": 444617887.8653
+        },
+        {
+            "volume": 517595.000000000000000000,
+            "amount": 517.595000000000000000,
+            "symbol": "YFII",
+            "value": 900667.059500000000000000,
+            "contract_code": "YFII-USDT",
+            "trade_amount": 7886.584,
+            "trade_volume": 7886584,
+            "trade_turnover": 14075647.4548
+        },
+        {
+            "volume": 125472.000000000000000000,
+            "amount": 1254720.000000000000000000,
+            "symbol": "ONT",
+            "value": 1061242.176000000000000000,
+            "contract_code": "ONT-USDT",
+            "trade_amount": 15386540,
+            "trade_volume": 1538654,
+            "trade_turnover": 13080065.346
+        },
+        {
+            "volume": 43104.000000000000000000,
+            "amount": 431040.000000000000000000,
+            "symbol": "THETA",
+            "value": 3854532.096000000000000000,
+            "contract_code": "THETA-USDT",
+            "trade_amount": 6836260,
+            "trade_volume": 683626,
+            "trade_turnover": 60618247.8676
+        },
+        {
+            "volume": 139925.000000000000000000,
+            "amount": 139925.000000000000000000,
+            "symbol": "NEAR",
+            "value": 407321.675000000000000000,
+            "contract_code": "NEAR-USDT",
+            "trade_amount": 1647064,
+            "trade_volume": 1647064,
+            "trade_turnover": 4832954.244
+        },
+        {
+            "volume": 57401.000000000000000000,
+            "amount": 574010.000000000000000000,
+            "symbol": "HBAR",
+            "value": 114187.809300000000000000,
+            "contract_code": "HBAR-USDT",
+            "trade_amount": 2971160,
+            "trade_volume": 297116,
+            "trade_turnover": 600668.7782
+        },
+        {
+            "volume": 126896.000000000000000000,
+            "amount": 12689.600000000000000000,
+            "symbol": "UMA",
+            "value": 136958.852800000000000000,
+            "contract_code": "UMA-USDT",
+            "trade_amount": 27405,
+            "trade_volume": 274050,
+            "trade_turnover": 295748.4806
+        },
+        {
+            "volume": 233846.000000000000000000,
+            "amount": 23384.600000000000000000,
+            "symbol": "FORTH",
+            "value": 374621.292000000000000000,
+            "contract_code": "FORTH-USDT",
+            "trade_amount": 344341.8,
+            "trade_volume": 3443418,
+            "trade_turnover": 5437398.3288
+        },
+        {
+            "volume": 3114373.000000000000000000,
+            "amount": 31143730.000000000000000000,
+            "symbol": "XRP",
+            "value": 24493920.770400000000000000,
+            "contract_code": "XRP-USDT",
+            "trade_amount": 475868360,
+            "trade_volume": 47586836,
+            "trade_turnover": 376227206.89
+        },
+        {
+            "volume": 312452.000000000000000000,
+            "amount": 312452000.000000000000000000,
+            "symbol": "BTT",
+            "value": 944229.944000000000000000,
+            "contract_code": "BTT-USDT",
+            "trade_amount": 2326148000,
+            "trade_volume": 2326148,
+            "trade_turnover": 7058592.624
+        },
+        {
+            "volume": 184264.000000000000000000,
+            "amount": 18426.400000000000000000,
+            "symbol": "ZEC",
+            "value": 2367423.872000000000000000,
+            "contract_code": "ZEC-USDT",
+            "trade_amount": 126796.6,
+            "trade_volume": 1267966,
+            "trade_turnover": 16685417.4
+        },
+        {
+            "volume": 235656.000000000000000000,
+            "amount": 23565.600000000000000000,
+            "symbol": "BNB",
+            "value": 7976814.206400000000000000,
+            "contract_code": "BNB-USDT",
+            "trade_amount": 554331.2,
+            "trade_volume": 5543312,
+            "trade_turnover": 186500490.192
+        },
+        {
+            "volume": 127712.000000000000000000,
+            "amount": 1277120.000000000000000000,
+            "symbol": "CHR",
+            "value": 223623.712000000000000000,
+            "contract_code": "CHR-USDT",
+            "trade_amount": 18337700,
+            "trade_volume": 1833770,
+            "trade_turnover": 3222008.2596
+        },
+        {
+            "volume": 29811.000000000000000000,
+            "amount": 2981100.000000000000000000,
+            "symbol": "ONE",
+            "value": 215891.262000000000000000,
+            "contract_code": "ONE-USDT",
+            "trade_amount": 73894000,
+            "trade_volume": 738940,
+            "trade_turnover": 5392898.708
+        },
+        {
+            "volume": 793183.000000000000000000,
+            "amount": 793183.000000000000000000,
+            "symbol": "SUSHI",
+            "value": 6115599.566600000000000000,
+            "contract_code": "SUSHI-USDT",
+            "trade_amount": 8823976,
+            "trade_volume": 8823976,
+            "trade_turnover": 68588894.4968
+        },
+        {
+            "volume": 157913.000000000000000000,
+            "amount": 157.913000000000000000,
+            "symbol": "MKR",
+            "value": 417521.972000000000000000,
+            "contract_code": "MKR-USDT",
+            "trade_amount": 1105.102,
+            "trade_volume": 1105102,
+            "trade_turnover": 2930018.7042
+        },
+        {
+            "volume": 897856.000000000000000000,
+            "amount": 89785.600000000000000000,
+            "symbol": "LTC",
+            "value": 14036182.848000000000000000,
+            "contract_code": "LTC-USDT",
+            "trade_amount": 1268054.8,
+            "trade_volume": 12680548,
+            "trade_turnover": 198068682.364
+        },
+        {
+            "volume": 1403815.000000000000000000,
+            "amount": 1403815.000000000000000000,
+            "symbol": "CRV",
+            "value": 2685638.476500000000000000,
+            "contract_code": "CRV-USDT",
+            "trade_amount": 19290626,
+            "trade_volume": 19290626,
+            "trade_turnover": 36970529.9308
+        },
+        {
+            "volume": 22620.000000000000000000,
+            "amount": 22620.000000000000000000,
+            "symbol": "BAND",
+            "value": 141270.948000000000000000,
+            "contract_code": "BAND-USDT",
+            "trade_amount": 100380,
+            "trade_volume": 100380,
+            "trade_turnover": 632974.636
+        },
+        {
+            "volume": 77526.000000000000000000,
+            "amount": 77526.000000000000000000,
+            "symbol": "AVAX",
+            "value": 1056283.997400000000000000,
+            "contract_code": "AVAX-USDT",
+            "trade_amount": 1106266,
+            "trade_volume": 1106266,
+            "trade_turnover": 15005317.8208
+        },
+        {
+            "volume": 719370.000000000000000000,
+            "amount": 7193700.000000000000000000,
+            "symbol": "XLM",
+            "value": 2145434.700600000000000000,
+            "contract_code": "XLM-USDT",
+            "trade_amount": 101493880,
+            "trade_volume": 10149388,
+            "trade_turnover": 30029712.6982
+        },
+        {
+            "volume": 65165.000000000000000000,
+            "amount": 65165.000000000000000000,
+            "symbol": "SNX",
+            "value": 544049.552000000000000000,
+            "contract_code": "SNX-USDT",
+            "trade_amount": 1166420,
+            "trade_volume": 1166420,
+            "trade_turnover": 9650025.9236
+        },
+        {
+            "volume": 5566600.000000000000000000,
+            "amount": 556660.000000000000000000,
+            "symbol": "LINK",
+            "value": 11733168.148000000000000000,
+            "contract_code": "LINK-USDT",
+            "trade_amount": 17440209,
+            "trade_volume": 174402090,
+            "trade_turnover": 369099521.56642
+        },
+        {
+            "volume": 1507010.000000000000000000,
+            "amount": 150701.000000000000000000,
+            "symbol": "MASK",
+            "value": 1026876.614000000000000000,
+            "contract_code": "MASK-USDT",
+            "trade_amount": 4279852.2,
+            "trade_volume": 42798522,
+            "trade_turnover": 27476603.6194
+        },
+        {
+            "volume": 839613.000000000000000000,
+            "amount": 839613.000000000000000000,
+            "symbol": "RNDR",
+            "value": 457169.278500000000000000,
+            "contract_code": "RNDR-USDT",
+            "trade_amount": 8365066,
+            "trade_volume": 8365066,
+            "trade_turnover": 4583493.8726
+        },
+        {
+            "volume": 2224894.000000000000000000,
+            "amount": 2224894.000000000000000000,
+            "symbol": "MDX",
+            "value": 4611760.283200000000000000,
+            "contract_code": "MDX-USDT",
+            "trade_amount": 13581518,
+            "trade_volume": 13581518,
+            "trade_turnover": 27612877.0306
+        },
+        {
+            "volume": 380455.000000000000000000,
+            "amount": 38045.500000000000000000,
+            "symbol": "NEO",
+            "value": 1730918.068000000000000000,
+            "contract_code": "NEO-USDT",
+            "trade_amount": 225748,
+            "trade_volume": 2257480,
+            "trade_turnover": 10207059.991
+        },
+        {
+            "volume": 129631.000000000000000000,
+            "amount": 129631.000000000000000000,
+            "symbol": "ATOM",
+            "value": 1579437.067100000000000000,
+            "contract_code": "ATOM-USDT",
+            "trade_amount": 1676716,
+            "trade_volume": 1676716,
+            "trade_turnover": 20771437.4122
+        },
+        {
+            "volume": 47190.000000000000000000,
+            "amount": 471900.000000000000000000,
+            "symbol": "BAT",
+            "value": 290218.500000000000000000,
+            "contract_code": "BAT-USDT",
+            "trade_amount": 1325780,
+            "trade_volume": 132578,
+            "trade_turnover": 805622.31
+        },
+        {
+            "volume": 48108.000000000000000000,
+            "amount": 48108.000000000000000000,
+            "symbol": "BNT",
+            "value": 169566.267600000000000000,
+            "contract_code": "BNT-USDT",
+            "trade_amount": 41918,
+            "trade_volume": 41918,
+            "trade_turnover": 147067.7602
+        }
+    ],
+    "ts": 1624124540211
+}

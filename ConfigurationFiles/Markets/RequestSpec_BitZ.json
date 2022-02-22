@@ -1,0 +1,869 @@
+{
+    "Order": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://apiv2.bitz.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/V2/Contract/addContractTrade"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UtcTime",
+                "Key": "timestamp",
+                "Value": [
+                    "yyyy-MM-ddTHH:mm:ss"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "accessKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "contractId",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Integer"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "price",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Double"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "amount",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Integer"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "leverage",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Double"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "direction",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Integer"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "type",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "isCross",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Integer"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "accessKey",
+                    "timestamp",
+                    "amount",
+                    "contractId",
+                    "direction",
+                    "isCross",
+                    "leverage",
+                    "price",
+                    "type"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "JSONBodyCombiner",
+                "Value": [
+                    "amount",
+                    "contractId",
+                    "direction",
+                    "isCross",
+                    "leverage",
+                    "price",
+                    "type"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UriEncodingComponent",
+                "Key": "UriEncoder",
+                "Value": [
+                    "QueryCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "UriEncoder"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },    
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddUpperCaseEncodedQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "accessKey",
+                    "timestamp",
+                    "signature",
+                    "amount",
+                    "contractId",
+                    "direction",
+                    "isCross",
+                    "leverage",
+                    "price",
+                    "type"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "StreamWriter",
+            "AddQuery"
+        ]
+    },
+    "CancelOrder": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://apiv2.bitz.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/V2/Contract/cancelContractTrade"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UtcTime",
+                "Key": "timestamp",
+                "Value": [
+                    "yyyy-MM-ddTHH:mm:ss"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "accessKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "entrustSheetId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "accessKey",
+                    "entrustSheetId",
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UriEncodingComponent",
+                "Key": "UriEncoder",
+                "Value": [
+                    "QueryCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "JSONBodyCombiner",
+                "Value": [
+                    "entrustSheetId"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "UriEncoder"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+	        {
+                "Type": "AddUpperCaseEncodedQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "accessKey",
+                    "entrustSheetId",
+                    "timestamp",
+                    "signature"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "StreamWriter",
+            "AddQuery"
+        ]
+    },
+    "OrderInfo": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://apiv2.bitz.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/V2/Contract/getContractOrderResult"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UtcTime",
+                "Key": "timestamp",
+                "Value": [
+                    "yyyy-MM-ddTHH:mm:ss"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "accessKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "entrustSheetId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "accessKey",
+                    "entrustSheetId",
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UriEncodingComponent",
+                "Key": "UriEncoder",
+                "Value": [
+                    "QueryCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "JSONBodyCombiner",
+                "Value": [
+                    "entrustSheetId"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "UriEncoder"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+	        {
+                "Type": "AddUpperCaseEncodedQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "accessKey",
+                    "entrustSheetId",
+                    "timestamp",
+                    "signature"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "StreamWriter",
+            "AddQuery"
+        ]
+    },
+    "Orderbook": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://apiv2.bitz.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/V2/Market/getContractOrderBook"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Delimeter",
+                "Value": [
+                    "?"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "contractId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "depth",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "BaseUrl",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "contractId",
+                    "depth"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineFullPathComponent",
+                "Key": "FullPathCombiner",
+                "Value": [
+                    "RequestPath",
+                    "Delimeter",
+                    "QueryCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "FullPathCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod"
+        ]
+    },
+    "Tickers": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://apiv2.bitz.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/V2/Market/getContractTickers"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "BaseUrl",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineFullPathComponent",
+                "Key": "FullPathCombiner",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "FullPathCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod"
+        ]
+    },
+    "Balance": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://apiv2.bitz.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/V2/Contract/getContractAccountInfo"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UtcTime",
+                "Key": "timestamp",
+                "Value": [
+                    "yyyy-MM-ddTHH:mm:ss"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "accessKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "accessKey",
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UriEncodingComponent",
+                "Key": "UriEncoder",
+                "Value": [
+                    "QueryCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "UriEncoder"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+	        {
+                "Type": "AddUpperCaseEncodedQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "accessKey",
+                    "timestamp",
+                    "signature"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "AddQuery"
+        ]
+    },
+    "Position": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://apiv2.bitz.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/V2/Contract/getContractAccountInfo"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "timestamp",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "accessKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "accessKey",
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UriEncodingComponent",
+                "Key": "UriEncoder",
+                "Value": [
+                    "QueryCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "UriEncoder"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+	        {
+                "Type": "AddUpperCaseEncodedQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "accessKey",
+                    "timestamp",
+                    "signature"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "AddQuery"
+        ]
+    },
+    "Leverage": {
+        "Components": [],
+        "Workflow": []
+    }
+}

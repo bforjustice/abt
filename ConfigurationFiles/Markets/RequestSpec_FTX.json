@@ -1,0 +1,1079 @@
+{
+    "Order": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://ftx.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/orders"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "UtcTimeMSec",
+                "Key": "timestamp",
+                "Value": [
+                    ""
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "market",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "String"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "side",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "String"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "reduceOnly",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Boolean"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "price",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Double"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "type",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "String"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "size",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Double"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "JSONBodyCombiner",
+                "Value": [
+                    "market",
+                    "side",
+                    "price",
+                    "reduceOnly",
+                    "type",
+                    "size"
+                ],
+                "ValueType": "Component"
+            }, 
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "BaseUrl",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "timestamp",
+                    "Method",
+                    "Prefix",
+		            "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-TS",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "FTX-KEY",
+                    "FTX-SIGN",
+                    "FTX-TS"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertContentTypeComponent",
+	        "StreamWriter",
+            "RegisterAuth"
+        ]
+    },
+    "CancelOrder": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://ftx.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/orders/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "UtcTimeMSec",
+                "Key": "timestamp",
+                "Value": [
+                    ""
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "order_id",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "DeleteMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "APIRequestPath",
+                "Value": [
+                    "Prefix",
+                    "order_id"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "timestamp",
+                    "Method",
+                    "APIRequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "APIRequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-TS",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "FTX-KEY",
+                    "FTX-SIGN",
+                    "FTX-TS"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertContentTypeComponent",
+            "RegisterAuth"
+        ]
+    },
+    "OrderInfo": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://ftx.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/orders/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "UtcTimeMSec",
+                "Key": "timestamp",
+                "Value": [
+                    ""
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "order_id",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "APIRequestPath",
+                "Value": [
+                    "Prefix",
+                    "order_id"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "timestamp",
+                    "Method",
+                    "APIRequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "APIRequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-TS",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "FTX-KEY",
+                    "FTX-SIGN",
+                    "FTX-TS"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertContentTypeComponent",
+            "RegisterAuth"
+        ]
+    },
+    "Orderbook": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://ftx.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_1",
+                "Value": [
+                    "/api/markets/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_2",
+                "Value": [
+                    "/orderbook"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "symbol",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "depth",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "BaseUrl",
+                    "Prefix_1",
+                    "symbol",
+                    "Prefix_2"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "depth"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "AddQuery",
+            "InsertContentTypeComponent"
+        ]
+    },
+    "Tickers": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://ftx.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_1",
+                "Value": [
+                    "/api/markets"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix_1"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod"
+        ]
+    },
+    "Balance": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://ftx.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/wallet/all_balances"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "UtcTimeMSec",
+                "Key": "timestamp",
+                "Value": [
+                    ""
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "timestamp",
+                    "Method",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-TS",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "FTX-KEY",
+                    "FTX-SIGN",
+                    "FTX-TS"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertContentTypeComponent",
+            "RegisterAuth"
+        ]
+    },
+    "Position": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://ftx.com/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/positions"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "UtcTimeMSec",
+                "Key": "timestamp",
+                "Value": [
+                    ""
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "timestamp",
+                    "Method",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-TS",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "FTX-KEY",
+                    "FTX-SIGN",
+                    "FTX-TS"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertContentTypeComponent",
+            "RegisterAuth"
+        ]
+    },
+    "Leverage": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://ftx.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/account/leverage"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "UtcTimeMSec",
+                "Key": "timestamp",
+                "Value": [
+                    ""
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "leverage",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Integer"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "JSONBodyCombiner",
+                "Value": [
+                    "leverage"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "timestamp",
+                    "Method",
+                    "Prefix",
+		            "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "FTX-TS",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "FTX-KEY",
+                    "FTX-SIGN",
+                    "FTX-TS"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+	        "StreamWriter",
+            "RegisterAuth"
+        ]
+    }
+}

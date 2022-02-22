@@ -1,0 +1,151 @@
+{
+    "Balance": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://apiv2.bitz.com/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/Contract/getContractAccountInfo"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Delimeter",
+                "Value": [
+                    "?"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "timeStamp",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "nonce",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "BaseUrl",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "apiKey",
+                    "nonce",
+                    "timeStamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "QueryCombiner",
+                    "SecretKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "MD5Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "HexEncodingComponent",
+                "Key": "sign",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "SignatureCombine",
+                "Value": [
+                    "QueryCombiner",
+                    "sign"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineFullPathComponent",
+                "Key": "FullPathCombiner",
+                "Value": [
+                    "RequestPath",
+                    "Delimeter",
+                    "SignatureCombine"
+                ],
+                "ValueType": "Component"
+            },        
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "FullPathCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertContentTypeComponent"
+        ]
+    }
+}

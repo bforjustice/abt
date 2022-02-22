@@ -1,0 +1,36 @@
+{
+  "ret_code": 0,
+  "ret_msg": "ok",
+  "ext_code": "",
+  "result": {
+      "current_page": 1,
+      "last_page": 6,
+      "data": [
+          {
+              "order_id":"bd1844f-f3c0-4e10-8c25-10fea03763f6",
+              "user_id": 1,
+              "symbol": "BTCUSDT",
+              "side": "Sell",
+              "order_type": "Limit",
+              "price": 8083,
+              "qty": 10,
+              "time_in_force": "GoodTillCancel",
+              "order_status": "New",
+              "last_exec_price": 8083,
+              "cum_exec_qty": 0,
+              "cum_exec_value": 0,
+              "cum_exec_fee": 0,
+              "order_link_id": "",
+              "reduce_only": false,
+              "close_on_trigger": false,
+              "created_time": "2019-10-21T07:28:19.396246Z",
+              "updated_time": "2019-10-21T07:28:19.396246Z"
+          }
+      ]
+  },
+  "ext_info": null,
+  "time_now": "1577448922.437871",
+  "rate_limit_status": 98,
+  "rate_limit_reset_ms": 1580885703683,
+  "rate_limit": 100
+}

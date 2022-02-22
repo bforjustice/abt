@@ -1,0 +1,39 @@
+{
+    "datas": [
+        {
+            "applId": 2,
+            "contractId": 999999,
+            "accountId": 63513,
+            "clOrderId": "9a9d444c6aa54eada3cbd5d42b2718b6",
+            "side": 1,
+            "orderPrice": "7260",
+            "orderQty": "100",
+            "orderId": "11585489048447590",
+            "orderTime": 1586485163425147,
+            "orderStatus": 2,
+            "matchQty": "0",
+            "matchAmt": "0",
+            "cancelQty": "0",
+            "matchTime": 0,
+            "orderType": 1,
+            "timeInForce": 0,
+            "feeRate": "0",
+            "markPrice": null,
+            "avgPrice": "0",
+            "positionEffect": 1,
+            "marginType": 1,
+            "initMarginRate": "0.01",
+            "fcOrderId": "",
+            "contractUnit": "0.01",
+            "stopPrice": "0",
+            "orderSubType": 0,
+            "stopCondition": 0,
+            "minimalQuantity": null
+        }
+    ],
+    "resMsg": {
+        "message": "success !",
+        "method": null,
+        "code": "1"
+    }
+}

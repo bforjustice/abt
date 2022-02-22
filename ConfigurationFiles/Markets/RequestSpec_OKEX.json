@@ -1,0 +1,1236 @@
+{
+    "Order": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://www.okex.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/v5/trade/order"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Passphrase",
+                "Value": [
+                    "870105"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "UtcTime",
+                "Key": "timestamp",
+                "Value": [
+                    "yyyy-MM-ddTHH:mm:ss.fffZ"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "instId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "reduceOnly",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType" : "Boolean"
+
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "tdMode",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "posSide",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "side",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "ordType",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "sz",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "px",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "JSONBodyCombiner",
+                "Value": [
+                    "instId",
+                    "tdMode",
+                    "side",
+                    "posSide",
+                    "ordType",
+                    "reduceOnly",
+                    "sz",
+                    "px"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "timestamp",
+                    "Method",
+                    "Prefix",
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-TIMESTAMP",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-PASSPHRASE",
+                "Value": [
+                    "Passphrase"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "OK-ACCESS-KEY",
+                    "OK-ACCESS-SIGN",
+                    "OK-ACCESS-TIMESTAMP",
+                    "OK-ACCESS-PASSPHRASE"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertContentTypeComponent",
+            "StreamWriter",
+            "RegisterAuth"
+        ]
+    },
+    "CancelOrder": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://www.okex.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/v5/trade/cancel-order"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Passphrase",
+                "Value": [
+                    "870105"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "UtcTime",
+                "Key": "timestamp",
+                "Value": [
+                    "yyyy-MM-ddTHH:mm:ss.fffZ"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "instId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "ordId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "JSONBodyCombiner",
+                "Value": [
+                    "instId",
+                    "ordId"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "timestamp",
+                    "Method",
+                    "Prefix",
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-TIMESTAMP",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-PASSPHRASE",
+                "Value": [
+                    "Passphrase"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "OK-ACCESS-KEY",
+                    "OK-ACCESS-SIGN",
+                    "OK-ACCESS-TIMESTAMP",
+                    "OK-ACCESS-PASSPHRASE"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertContentTypeComponent",
+            "StreamWriter",
+            "RegisterAuth"
+        ]
+    },
+    "OrderInfo": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://www.okex.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/v5/trade/order"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Delimeter",
+                "Value": [
+                    "?"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "UtcTime",
+                "Key": "timestamp",
+                "Value": [
+                    "yyyy-MM-ddTHH:mm:ss.fffZ"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Passphrase",
+                "Value": [
+                    "870105"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "instId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "ordId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "instId",
+                    "ordId"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "BaseUrl",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "timestamp",
+                    "Method",
+                    "Prefix",
+                    "Delimeter",
+                    "QueryCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-TIMESTAMP",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-PASSPHRASE",
+                "Value": [
+                    "Passphrase"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "OK-ACCESS-KEY",
+                    "OK-ACCESS-SIGN",
+                    "OK-ACCESS-TIMESTAMP",
+                    "OK-ACCESS-PASSPHRASE"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "instId",
+                    "ordId"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertContentTypeComponent",
+            "AddQuery",
+            "RegisterAuth"
+        ]
+    },
+    "Orderbook": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://www.okex.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/v5/market/books"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "instId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "sz",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "instId",
+                    "sz"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "AddQuery"
+        ]
+    },
+    "Tickers": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://www.okex.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/v5/market/tickers"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "instType",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "instType"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "AddQuery"
+        ]
+    },
+    "Balance": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://www.okex.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/v5/account/balance"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "UtcTime",
+                "Key": "timestamp",
+                "Value": [
+                    "yyyy-MM-ddTHH:mm:ss.fffZ"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Passphrase",
+                "Value": [
+                    "870105"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "timestamp",
+                    "Method",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-TIMESTAMP",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-PASSPHRASE",
+                "Value": [
+                    "Passphrase"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "OK-ACCESS-KEY",
+                    "OK-ACCESS-SIGN",
+                    "OK-ACCESS-TIMESTAMP",
+                    "OK-ACCESS-PASSPHRASE"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertContentTypeComponent",
+            "RegisterAuth"
+        ]
+    },
+    "Position": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://www.okex.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/v5/account/positions"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Passphrase",
+                "Value": [
+                    "870105"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "UtcTime",
+                "Key": "timestamp",
+                "Value": [
+                    "yyyy-MM-ddTHH:mm:ss.fffZ"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "timestamp",
+                    "Method",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-TIMESTAMP",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-PASSPHRASE",
+                "Value": [
+                    "Passphrase"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "OK-ACCESS-KEY",
+                    "OK-ACCESS-SIGN",
+                    "OK-ACCESS-TIMESTAMP",
+                    "OK-ACCESS-PASSPHRASE"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertContentTypeComponent",
+            "RegisterAuth"
+        ]
+    },
+    "Leverage": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://www.okex.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/v5/account/set-leverage"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Passphrase",
+                "Value": [
+                    "870105"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "UtcTime",
+                "Key": "timestamp",
+                "Value": [
+                    "yyyy-MM-ddTHH:mm:ss.fffZ"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "instId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "lever",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "mgnMode",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "JSONBodyCombiner",
+                "Value": [
+                    "instId",
+                    "lever",
+                    "mgnMode"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "timestamp",
+                    "Method",
+                    "Prefix",
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-TIMESTAMP",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "OK-ACCESS-PASSPHRASE",
+                "Value": [
+                    "Passphrase"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "OK-ACCESS-KEY",
+                    "OK-ACCESS-SIGN",
+                    "OK-ACCESS-TIMESTAMP",
+                    "OK-ACCESS-PASSPHRASE"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "StreamWriter",
+            "RegisterAuth"
+        ]
+    }
+}

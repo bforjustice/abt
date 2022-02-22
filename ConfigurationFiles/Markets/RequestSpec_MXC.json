@@ -1,0 +1,1139 @@
+{
+    "Order": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://contract.mxc.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/v1/private/order/submit"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Delimeter",
+                "Value": [
+                    "?"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "timestamp",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "api_key",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "symbol",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "price",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Double"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "vol",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Double"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "leverage",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Integer"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "side",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Integer"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "type",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Integer"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "openType",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Integer"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "JSONBodyCombiner",
+                "Value": [
+                    "symbol",
+                    "price",
+                    "vol",
+                    "side",
+                    "type",
+                    "openType"
+                ],
+                "ValueType": "Component"
+            }, 
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "BaseUrl",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "api_key",
+                    "timestamp",
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "HexEncodingComponent",
+                "Key": "SignatureValue",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "ApiKey",
+                "Value": [
+                    "api_key"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Request-Time",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "signature",
+                "Value": [
+                    "SignatureValue"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "ApiKey",
+            "Request-Time",
+            "signature",
+            "InsertContentTypeComponent",
+            "StreamWriter"
+        ]
+    },
+    "CancelOrder": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://contract.mxc.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/v1/private/order/cancel"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Delimeter",
+                "Value": [
+                    "?"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "timestamp",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "api_key",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "cancelList",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "JSONBodyCombiner",
+                "Value": [
+                    "cancelList"
+                ],
+                "ValueType": "Component"
+            }, 
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "BaseUrl",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "api_key",
+                    "timestamp",
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "HexEncodingComponent",
+                "Key": "SignatureValue",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "ApiKey",
+                "Value": [
+                    "api_key"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Request-Time",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Signature",
+                "Value": [
+                    "SignatureValue"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "ApiKey",
+            "Request-Time",
+            "Signature",
+            "InsertContentTypeComponent",
+            "StreamWriter"
+        ]
+    },
+    "OrderInfo": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://contract.mxc.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/v1/private/order/get/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Delimeter",
+                "Value": [
+                    "?"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "timestamp",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "api_key",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "order_id",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "BaseUrl",
+                    "Prefix",
+                    "order_id"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "api_key",
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "HexEncodingComponent",
+                "Key": "SignatureValue",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "ApiKey",
+                "Value": [
+                    "api_key"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Request-Time",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Signature",
+                "Value": [
+                    "SignatureValue"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "ApiKey",
+            "Request-Time",
+            "Signature",
+            "InsertContentTypeComponent"        
+        ]
+    },
+    "Orderbook": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://contract.mxc.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/v1/contract/depth/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Delimeter",
+                "Value": [
+                    "?"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "symbol",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "limit",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "BaseUrl",
+                    "Prefix",
+                    "symbol"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "limit"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineFullPathComponent",
+                "Key": "FullPathCombiner",
+                "Value": [
+                    "RequestPath",
+                    "Delimeter",
+                    "QueryCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "FullPathCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod"
+        ]
+    },
+    "Tickers": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://contract.mxc.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/v1/contract/detail"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "BaseUrl",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineFullPathComponent",
+                "Key": "FullPathCombiner",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "FullPathCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod"
+        ]
+    },
+    "Balance": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://contract.mxc.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/v1/private/account/assets"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Delimeter",
+                "Value": [
+                    "?"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "timestamp",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "api_key",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "BaseUrl",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "api_key",
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "HexEncodingComponent",
+                "Key": "SignatureValue",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "ApiKey",
+                "Value": [
+                    "api_key"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Request-Time",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Signature",
+                "Value": [
+                    "SignatureValue"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "ApiKey",
+            "Request-Time",
+            "Signature",
+            "InsertContentTypeComponent"
+        ]
+    },
+    "Position": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://contract.mxc.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/v1/private/position/open_positions"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Delimeter",
+                "Value": [
+                    "?"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "timestamp",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "api_key",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "BaseUrl",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "api_key",
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "HexEncodingComponent",
+                "Key": "SignatureValue",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "ApiKey",
+                "Value": [
+                    "api_key"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Request-Time",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Signature",
+                "Value": [
+                    "SignatureValue"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "ApiKey",
+            "Request-Time",
+            "Signature",
+            "InsertContentTypeComponent"
+        ]
+    },
+    "Leverage": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://contract.mxc.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/api/v1/private/position/change_leverage"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Delimeter",
+                "Value": [
+                    "?"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "timestamp",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "api_key",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "positionId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "leverage",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Integer"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "JSONBodyCombiner",
+                "Value": [
+                    "positionId",
+                    "leverage"
+                ],
+                "ValueType": "Component"
+            }, 
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "BaseUrl",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "api_key",
+                    "timestamp",
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "HexEncodingComponent",
+                "Key": "SignatureValue",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "ApiKey",
+                "Value": [
+                    "api_key"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Request-Time",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Signature",
+                "Value": [
+                    "SignatureValue"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "ApiKey",
+            "Request-Time",
+            "Signature",
+            "InsertContentTypeComponent",
+            "StreamWriter"
+        ]
+    }
+}

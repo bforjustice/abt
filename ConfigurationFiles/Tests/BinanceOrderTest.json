@@ -1,0 +1,202 @@
+{
+    "Order": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://fapi.binance.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/fapi/v1/order"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Delimeter",
+                "Value": [
+                    "?"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "symbol",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "side",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "type",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "timeInForce",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "quantity",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "price",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "recvWindow",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "timestamp",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "BaseUrl",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "symbol",
+                    "side",
+                    "type",
+                    "quantity",
+                    "price",
+                    "timeInForce",
+                    "recvWindow",
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "QueryCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ByteToStringEncoder",
+                "Key": "signature",
+                "Value": [
+                    "SecretKey",
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "SignatureCombine",
+                "Value": [
+                    "QueryCombiner",
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineFullPathComponent",
+                "Key": "FullPathCombiner",
+                "Value": [
+                    "RequestPath",
+                    "Delimeter",
+                    "SignatureCombine"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "FullPathCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "X-MBX-APIKEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "SignatureCombine"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "X-MBX-APIKEY",
+            "InsertAcceptComponent",
+            "StreamWriter"
+        ]
+    }
+}

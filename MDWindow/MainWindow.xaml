@@ -1,0 +1,52 @@
+﻿<Window x:Class="MDWindow.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:controls="clr-namespace:MDWindow.UserControls"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="800" Width="680.303">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <StackPanel Margin="10" Orientation="Vertical" Grid.Column="0">
+            <ComboBox Margin="10" Name="CoinList">
+                <ComboBoxItem IsSelected="True">BTC</ComboBoxItem>
+                <ComboBoxItem>ETH</ComboBoxItem>
+                <ComboBoxItem>LTC</ComboBoxItem>
+                <ComboBoxItem>BCH</ComboBoxItem>
+                <ComboBoxItem>LINK</ComboBoxItem>
+                <ComboBoxItem>XTZ</ComboBoxItem>
+            </ComboBox>
+            <Button Margin="10" Name="MDStartBtn" Click="MDStartBtn_Click" Content="Start"></Button>
+            <Button Margin="10" Name="OpenOrderLoadBtn" Click="OpenOrderLoadBtn_Click" Content="OpenOrderLoad"></Button>
+            <Button Margin="10" Name="OpenPositionLoadBtn" Click="OpenPositionLoadBtn_Click" Content="OpenPositionLoad"></Button>
+            <Button Margin="10" Name="ClearOrderLoadBtn" Click="ClearOrderLoadBtn_Click" Content="ClearOpenOrder"></Button>
+            <Button Margin="10" Name="ClearPositionLoadBtn" Click="ClearPositionLoadBtn_Click" Content="ClearPosition"></Button>
+            <ListView Margin="10,10,0,13" Name="PositionListView" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="200"></ListView>
+            <ListView Margin="10,10,0,13" Name="OpenOrderListView" HorizontalAlignment="Stretch" VerticalAlignment="Top" Height="200"></ListView>
+        </StackPanel>
+        <Grid Grid.Column="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="5*" />
+                <RowDefinition Height="5*" />
+            </Grid.RowDefinitions>
+
+            <controls:MarketLogView x:Name="MarketLog" Grid.Row="0" VerticalContentAlignment="Stretch" ></controls:MarketLogView>
+            <controls:CalcLogView x:Name="CalcLog"  Grid.Row="1"  VerticalContentAlignment="Stretch"></controls:CalcLogView>
+        </Grid>
+        <Grid Grid.Column="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="4*" />
+                <RowDefinition Height="3*" />
+                <RowDefinition Height="3*" />
+            </Grid.RowDefinitions>
+            <controls:CommLogView x:Name="CommLog" Grid.Row="0" VerticalContentAlignment="Stretch"></controls:CommLogView>
+            <controls:OrderBookCtrlLogView x:Name="OrdBookLog" Grid.Row="1"  VerticalContentAlignment="Stretch" ></controls:OrderBookCtrlLogView>
+            <controls:ResCtrlLogView x:Name="ResCtrlLog" Grid.Row="2"  VerticalContentAlignment="Stretch"></controls:ResCtrlLogView>
+        </Grid>
+    </Grid>
+</Window>

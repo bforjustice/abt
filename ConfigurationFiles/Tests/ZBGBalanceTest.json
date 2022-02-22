@@ -1,0 +1,187 @@
+{
+    "Balance": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://www.zbg.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/exchange/api/v1/future/assets/available"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Oripassphrase",
+                "Value": [
+                    "870105"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Delimeter",
+                "Value": [
+                    "?"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "timestamp",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "BaseUrl",
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PreSignature",
+                "Value": [
+                    "apiKey",
+                    "timestamp",
+                    "SecretKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineParameterComponent",
+                "Key": "PrePassphrase",
+                "Value": [
+                    "timestamp",
+                    "Oripassphrase"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "MD5Hash",
+                "Key": "HashPassphrase",
+                "Value": [
+                    "SecretKey",
+                    "PrePassphrase"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "MD5Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "HexEncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "HexEncodingComponent",
+                "Key": "HexPassphrase",
+                "Value": [
+                    "HashPassphrase"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Apiid",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Sign",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Timestamp",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Passphrase",
+                "Value": [
+                    "HexPassphrase"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "Apiid",
+            "Sign",
+            "Timestamp",
+            "Passphrase",
+            "InsertContentTypeComponent"
+        ]
+    }
+}

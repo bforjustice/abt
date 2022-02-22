@@ -1,0 +1,16 @@
+{
+  "symbol": "cmt_btcusdt",
+  "size": "12",
+  "timestamp": "15582271175271",
+  "client_oid": "cmdtde",
+  "createTime": "1698475585258",
+  "filled_qty": "0",
+  "fee": "0",
+  "order_id": "513468410013679613",
+  "price": "12",
+  "price_avg": "0",
+  "status": "-1",
+  "type": "1",
+  "order_type": "0",
+  "totalProfits": "253"
+}

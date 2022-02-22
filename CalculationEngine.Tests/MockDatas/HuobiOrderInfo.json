@@ -1,0 +1,37 @@
+{
+    "status": "ok",
+    "data": [
+        {
+            "symbol": "ETH",
+            "contract_code": "ETH-USDT",
+            "volume": 1,
+            "price": 17,
+            "order_price_type": "optimal_10_ioc",
+            "order_type": 1,
+            "direction": "sell",
+            "offset": "open",
+            "lever_rate": 5,
+            "order_id": 784056956650258432,
+            "client_order_id": null,
+            "created_at": 1606975345528,
+            "trade_volume": 1,
+            "trade_turnover": 0.5,
+            "fee": -0.0002,
+            "trade_avg_price": 50,
+            "margin_frozen": 0,
+            "profit": 0,
+            "status": 6,
+            "order_source": "api",
+            "order_id_str": "784056956650258432",
+            "fee_asset": "USDT",
+            "liquidation_type": "0",
+            "canceled_at": 0,
+            "margin_asset": "USDT",
+            "margin_account": "USDT",
+            "margin_mode": "cross",
+            "is_tpsl": 0,
+            "real_profit": 0
+        }
+    ],
+    "ts": 1606975356655
+}

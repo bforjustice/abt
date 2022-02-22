@@ -1,0 +1,21 @@
+{
+  "status": 200,
+  "msg": "",
+  "time": 1573207257,
+  "microtime": "0.25998300 1573207257",
+  "source": "api",
+  "data": {
+    "orderId": "734709",
+    "contractId": "101",
+    "amount": "500",
+    "price": "7500.00",
+    "type": "limit",
+    "leverage": "10",
+    "direction": "1",
+    "orderStatus": "0",
+    "isCross": "-1",
+    "available": "500",
+    "time": 1557994750,
+    "pair": "BTC_USD"
+  }
+}

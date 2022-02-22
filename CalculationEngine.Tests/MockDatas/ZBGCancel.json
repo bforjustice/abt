@@ -1,0 +1,24 @@
+{
+    "datas":[
+        {
+            "contractId":999999,
+            "posiQty":"-100",
+            "openAmt":"7296.7444444444444444",
+            "initMargin":"72.967444444444444444",
+            "posiStatus":0,
+            "marginType":1,
+            "closeProfitLoss":"17.75555555555555554",
+            "initMarginRate":"0.01",
+            "maintainMarginRate":"0.005",
+            "frozenCloseQty":"0",
+            "frozenOpenQty":"0",
+            "extraMargin":"0",
+            "contractUnit":"0.01"
+        }
+    ],
+    "resMsg": {
+        "message": "success !",
+        "method": null,
+        "code": "1"
+    }
+}

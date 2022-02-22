@@ -1,0 +1,1287 @@
+{
+    "Order": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://api.hbdm.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "HostName",
+                "Value": [
+                    "api.hbdm.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/linear-swap-api/v1/swap_cross_order"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "SignatureMethod",
+                "Value": [
+                    "HmacSHA256"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "SignatureVersion",
+                "Value": [
+                    "2"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UtcTime",
+                "Key": "Timestamp",
+                "Value": [
+                    "yyyy-MM-ddTHH:mm:ss"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "AccessKeyId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "contract_code",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "volume",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Integer"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "price",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "direction",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "offset",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "lever_rate",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Integer"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "order_price_type",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "AccessKeyId",
+                    "SignatureMethod",
+                    "SignatureVersion",
+                    "Timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "JSONBodyCombiner",
+                "Value": [
+                    "contract_code",
+                    "volume",
+                    "price",
+                    "direction",
+                    "offset",
+                    "lever_rate",
+                    "order_price_type"
+                ],
+                "ValueType": "Component"
+            }, 
+            {
+                "Type": "UriEncodingComponent",
+                "Key": "UriEncoder",
+                "Value": [
+                    "QueryCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddDelimeterBetweenParamsComponent",
+                "Key": "PreSignatureData",
+                "Value": [
+                    "Method",
+                    "HostName",
+                    "Prefix",
+                    "UriEncoder"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignatureData"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "Signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddEncodedQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "AccessKeyId",
+                    "SignatureMethod",
+                    "SignatureVersion",
+                    "Timestamp",
+                    "Signature"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertAcceptComponent",
+            "InsertContentTypeComponent",
+            "StreamWriter",
+            "AddQuery"
+        ]
+    },
+    "CancelOrder": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://api.hbdm.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "HostName",
+                "Value": [
+                    "api.hbdm.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/linear-swap-api/v1/swap_cross_cancel"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "SignatureMethod",
+                "Value": [
+                    "HmacSHA256"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "SignatureVersion",
+                "Value": [
+                    "2"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UtcTime",
+                "Key": "Timestamp",
+                "Value": [
+                    "yyyy-MM-ddTHH:mm:ss"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "AccessKeyId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "contract_code",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "order_id",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Long"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "AccessKeyId",
+                    "SignatureMethod",
+                    "SignatureVersion",
+                    "Timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "JSONBodyCombiner",
+                "Value": [
+                    "contract_code",
+                    "order_id"
+                ],
+                "ValueType": "Component"
+            }, 
+            {
+                "Type": "UriEncodingComponent",
+                "Key": "UriEncoder",
+                "Value": [
+                    "QueryCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddDelimeterBetweenParamsComponent",
+                "Key": "PreSignatureData",
+                "Value": [
+                    "Method",
+                    "HostName",
+                    "Prefix",
+                    "UriEncoder"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignatureData"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "Signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddEncodedQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "AccessKeyId",
+                    "SignatureMethod",
+                    "SignatureVersion",
+                    "Timestamp",
+                    "Signature"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertAcceptComponent",
+            "InsertContentTypeComponent",
+            "StreamWriter",
+            "AddQuery"
+        ]
+    },
+    "OrderInfo": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://api.hbdm.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "HostName",
+                "Value": [
+                    "api.hbdm.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/linear-swap-api/v1/swap_cross_order_info"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "SignatureMethod",
+                "Value": [
+                    "HmacSHA256"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "SignatureVersion",
+                "Value": [
+                    "2"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UtcTime",
+                "Key": "Timestamp",
+                "Value": [
+                    "yyyy-MM-ddTHH:mm:ss"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "AccessKeyId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "contract_code",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "order_id",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Long"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "AccessKeyId",
+                    "SignatureMethod",
+                    "SignatureVersion",
+                    "Timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "JSONBodyCombiner",
+                "Value": [
+                    "contract_code",
+                    "order_id"
+                ],
+                "ValueType": "Component"
+            }, 
+            {
+                "Type": "UriEncodingComponent",
+                "Key": "UriEncoder",
+                "Value": [
+                    "QueryCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddDelimeterBetweenParamsComponent",
+                "Key": "PreSignatureData",
+                "Value": [
+                    "Method",
+                    "HostName",
+                    "Prefix",
+                    "UriEncoder"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignatureData"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "Signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddEncodedQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "AccessKeyId",
+                    "SignatureMethod",
+                    "SignatureVersion",
+                    "Timestamp",
+                    "Signature"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertAcceptComponent",
+            "InsertContentTypeComponent",
+            "StreamWriter",
+            "AddQuery"
+        ]
+    },
+    "Orderbook": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://api.hbdm.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/linear-swap-ex/market/depth"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "contract_code",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "type",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddEncodedQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "contract_code",
+                    "type"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertAcceptComponent",
+            "InsertContentTypeComponent",
+            "AddQuery"
+        ]
+    },
+    "Tickers": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://api.hbdm.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/linear-swap-api/v1/swap_open_interest"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertAcceptComponent",
+            "InsertContentTypeComponent"
+        ]
+    },
+    "Balance": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://api.hbdm.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "HostName",
+                "Value": [
+                    "api.hbdm.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/linear-swap-api/v1/swap_cross_account_info"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "SignatureMethod",
+                "Value": [
+                    "HmacSHA256"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "SignatureVersion",
+                "Value": [
+                    "2"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UtcTime",
+                "Key": "Timestamp",
+                "Value": [
+                    "yyyy-MM-ddTHH:mm:ss"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "AccessKeyId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "Timestamp",
+                    "AccessKeyId",
+                    "SignatureMethod",
+                    "SignatureVersion"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UriEncodingComponent",
+                "Key": "UriEncoder",
+                "Value": [
+                    "QueryCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddDelimeterBetweenParamsComponent",
+                "Key": "PreSignatureData",
+                "Value": [
+                    "Method",
+                    "HostName",
+                    "Prefix",
+                    "UriEncoder"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignatureData"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "Signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddEncodedQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "AccessKeyId",
+                    "SignatureMethod",
+                    "SignatureVersion",
+                    "Timestamp",
+                    "Signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertAcceptComponent",
+            "InsertContentTypeComponent",
+            "AddQuery"
+        ]
+    },
+    "Position": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://api.hbdm.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "HostName",
+                "Value": [
+                    "api.hbdm.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/linear-swap-api/v1/swap_cross_position_info"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "SignatureMethod",
+                "Value": [
+                    "HmacSHA256"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "SignatureVersion",
+                "Value": [
+                    "2"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UtcTime",
+                "Key": "Timestamp",
+                "Value": [
+                    "yyyy-MM-ddTHH:mm:ss"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "AccessKeyId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "Timestamp",
+                    "AccessKeyId",
+                    "SignatureMethod",
+                    "SignatureVersion"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UriEncodingComponent",
+                "Key": "UriEncoder",
+                "Value": [
+                    "QueryCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddDelimeterBetweenParamsComponent",
+                "Key": "PreSignatureData",
+                "Value": [
+                    "Method",
+                    "HostName",
+                    "Prefix",
+                    "UriEncoder"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignatureData"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "Signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddEncodedQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "AccessKeyId",
+                    "SignatureMethod",
+                    "SignatureVersion",
+                    "Timestamp",
+                    "Signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertAcceptComponent",
+            "InsertContentTypeComponent",
+            "AddQuery"
+        ]
+    },
+    "Leverage": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://api.hbdm.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "HostName",
+                "Value": [
+                    "api.hbdm.com"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix",
+                "Value": [
+                    "/linear-swap-api/v1/swap_cross_switch_lever_rate"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "SignatureMethod",
+                "Value": [
+                    "HmacSHA256"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "SignatureVersion",
+                "Value": [
+                    "2"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "UtcTime",
+                "Key": "Timestamp",
+                "Value": [
+                    "yyyy-MM-ddTHH:mm:ss"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "AccessKeyId",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "contract_code",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "lever_rate",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType": "Integer"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "AccessKeyId",
+                    "SignatureMethod",
+                    "SignatureVersion",
+                    "Timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "JSONBodyCombiner",
+                "Value": [
+                    "contract_code",
+                    "lever_rate"
+                ],
+                "ValueType": "Component"
+            }, 
+            {
+                "Type": "UriEncodingComponent",
+                "Key": "UriEncoder",
+                "Value": [
+                    "QueryCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddDelimeterBetweenParamsComponent",
+                "Key": "PreSignatureData",
+                "Value": [
+                    "Method",
+                    "HostName",
+                    "Prefix",
+                    "UriEncoder"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA256Hash",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignatureData"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "Base64EncodingComponent",
+                "Key": "Signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "Prefix"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "JSONBodyCombiner"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddEncodedQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "AccessKeyId",
+                    "SignatureMethod",
+                    "SignatureVersion",
+                    "Timestamp",
+                    "Signature"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertAcceptComponent",
+            "StreamWriter",
+            "AddQuery"
+        ]
+    }
+}

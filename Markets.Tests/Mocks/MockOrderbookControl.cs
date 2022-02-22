@@ -1,0 +1,3 @@
+﻿namespace Markets.Tests.Mocks
+{
+}

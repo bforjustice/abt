@@ -1,0 +1,1489 @@
+{
+    "Order": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://api.gateio.ws"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_1",
+                "Value": [
+                    "/api/v4/futures/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_2",
+                "Value": [
+                    "/orders"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "settle",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "contract",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "size",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType" : "Integer"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "price",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "tif",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "reduce_only",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType" : "Boolean"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "iceberg",
+                "Value": [],
+                "ValueType": "Parameter",
+                "ParameterType" : "Integer"
+            },
+            {
+                "Type": "UnixTimeSec",
+                "Key": "timestamp",
+                "Value": [
+                    ""
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "payload",
+                "Value": [
+                    "contract",
+                    "size",
+                    "iceberg",
+                    "price",
+                    "reduce_only",
+                    "tif"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "Prefix_1",
+                    "settle",
+                    "Prefix_2"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA512Component",
+                "Key": "PayloadHash",
+                "Value": [
+                    "payload"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "PayloadEncoded",
+                "Value": [
+                    "PayloadHash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddDelimeterBetweenParamsComponent",
+                "Key": "PreSignatureData",
+                "Value": [
+                    "Method",
+                    "RequestPath",
+		            "QueryCombiner",
+                    "PayloadEncoded",
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "HmacSHA512Component",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignatureData"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Timestamp",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "payload"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "KEY",
+                    "SIGN",
+                    "Timestamp"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertAcceptComponent",
+            "InsertContentTypeComponent",
+            "StreamWriter",
+            "RegisterAuth"
+        ]
+    },
+    "CancelOrder": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://api.gateio.ws"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_1",
+                "Value": [
+                    "/api/v4/futures/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_2",
+                "Value": [
+                    "/orders/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "DeleteMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "settle",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "order_id",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "UnixTimeSec",
+                "Key": "timestamp",
+                "Value": [
+                    ""
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "payload",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "Prefix_1",
+                    "settle",
+                    "Prefix_2",
+                    "order_id"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA512Component",
+                "Key": "PayloadHash",
+                "Value": [
+                    "payload"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "PayloadEncoded",
+                "Value": [
+                    "PayloadHash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddDelimeterBetweenParamsComponent",
+                "Key": "PreSignatureData",
+                "Value": [
+                    "Method",
+                    "RequestPath",
+		            "QueryCombiner",
+                    "PayloadEncoded",
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "HmacSHA512Component",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignatureData"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Timestamp",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "KEY",
+                    "SIGN",
+                    "Timestamp"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertContentTypeComponent",
+            "InsertAcceptComponent",
+            "RegisterAuth"
+        ]
+    },
+    "OrderInfo": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://api.gateio.ws"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_1",
+                "Value": [
+                    "/api/v4/futures/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_2",
+                "Value": [
+                    "/orders/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "settle",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "order_id",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "status",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "contract",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "UnixTimeSec",
+                "Key": "timestamp",
+                "Value": [
+                    ""
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "payload",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "Prefix_1",
+                    "settle",
+                    "Prefix_2",
+                    "order_id"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA512Component",
+                "Key": "PayloadHash",
+                "Value": [
+                    "payload"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "PayloadEncoded",
+                "Value": [
+                    "PayloadHash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddDelimeterBetweenParamsComponent",
+                "Key": "PreSignatureData",
+                "Value": [
+                    "Method",
+                    "RequestPath",
+		            "QueryCombiner",
+                    "PayloadEncoded",
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "HmacSHA512Component",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignatureData"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Timestamp",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "KEY",
+                    "SIGN",
+                    "Timestamp"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertAcceptComponent",
+            "InsertContentTypeComponent",
+            "RegisterAuth"
+        ]
+    },
+    "Orderbook": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://api.gateio.ws"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_1",
+                "Value": [
+                    "/api/v4/futures/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_2",
+                "Value": [
+                    "/order_book"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "settle",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "contract",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "limit",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "Prefix_1",
+                    "settle",
+                    "Prefix_2"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "contract",
+                    "limit"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "AddQuery",
+            "InsertMethod",
+            "InsertAcceptComponent",
+            "InsertContentTypeComponent"
+        ]
+    },
+    "Tickers": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://api.gateio.ws"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_1",
+                "Value": [
+                    "/api/v4/futures/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_2",
+                "Value": [
+                    "/tickers"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "settle",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "Prefix_1",
+                    "settle",
+                    "Prefix_2"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertAcceptComponent",
+            "InsertContentTypeComponent"
+        ]
+    },
+    "Balance": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://api.gateio.ws"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_1",
+                "Value": [
+                    "/api/v4/futures/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_2",
+                "Value": [
+                    "/accounts"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "settle",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "UnixTimeSec",
+                "Key": "timestamp",
+                "Value": [
+                    ""
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "payload",
+                "Value": [],
+                "ValueType": "Component"
+            }, 
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "Prefix_1",
+                    "settle",
+                    "Prefix_2"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA512Component",
+                "Key": "PayloadHash",
+                "Value": [
+                    "payload"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "PayloadEncoded",
+                "Value": [
+                    "PayloadHash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddDelimeterBetweenParamsComponent",
+                "Key": "PreSignatureData",
+                "Value": [
+                    "Method",
+                    "RequestPath",
+                    "payload",
+                    "PayloadEncoded",
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "HmacSHA512Component",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignatureData"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Timestamp",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "KEY",
+                    "SIGN",
+                    "Timestamp"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertAcceptComponent",
+            "InsertContentTypeComponent",
+            "RegisterAuth"
+        ]
+    },
+    "Position": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://api.gateio.ws"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_1",
+                "Value": [
+                    "/api/v4/futures/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_2",
+                "Value": [
+                    "/positions"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "GetMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "settle",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "UnixTimeSec",
+                "Key": "timestamp",
+                "Value": [
+                    ""
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "CombinParameterByJSONStringComponent",
+                "Key": "payload",
+                "Value": [],
+                "ValueType": "Component"
+            }, 
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "Prefix_1",
+                    "settle",
+                    "Prefix_2"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA512Component",
+                "Key": "PayloadHash",
+                "Value": [
+                    "payload"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "PayloadEncoded",
+                "Value": [
+                    "PayloadHash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddDelimeterBetweenParamsComponent",
+                "Key": "PreSignatureData",
+                "Value": [
+                    "Method",
+                    "RequestPath",
+                    "QueryCombiner",
+                    "PayloadEncoded",
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "HmacSHA512Component",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignatureData"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Timestamp",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "KEY",
+                    "SIGN",
+                    "Timestamp"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertAcceptComponent",
+            "InsertContentTypeComponent",
+            "RegisterAuth"
+        ]
+    },
+    "Leverage": {
+        "Components": [
+            {
+                "Type": "ValueComponent",
+                "Key": "BaseUrl",
+                "Value": [
+                    "https://api.gateio.ws"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_1",
+                "Value": [
+                    "/api/v4/futures/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_2",
+                "Value": [
+                    "/positions/"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ValueComponent",
+                "Key": "Prefix_3",
+                "Value": [
+                    "/leverage"
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "PostMethodComponent",
+                "Key": "Method",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "settle",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "contract",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "leverage",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "UnixTimeSec",
+                "Key": "timestamp",
+                "Value": [
+                    ""
+                ],
+                "ValueType": "Value"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "apiKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "SecretKey",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "ParameterComponent",
+                "Key": "payload",
+                "Value": [],
+                "ValueType": "Parameter"
+            },
+            {
+                "Type": "RequestPathCombiner",
+                "Key": "RequestPath",
+                "Value": [
+                    "Prefix_1",
+                    "settle",
+                    "Prefix_2",
+                    "contract",
+                    "Prefix_3"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CombineQueryString",
+                "Key": "QueryCombiner",
+                "Value": [
+                    "leverage"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "SHA512Component",
+                "Key": "PayloadHash",
+                "Value": [
+                    "payload"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "PayloadEncoded",
+                "Value": [
+                    "PayloadHash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddDelimeterBetweenParamsComponent",
+                "Key": "PreSignatureData",
+                "Value": [
+                    "Method",
+                    "RequestPath",
+		            "QueryCombiner",
+                    "PayloadEncoded",
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "HmacSHA512Component",
+                "Key": "Hash",
+                "Value": [
+                    "SecretKey",
+                    "PreSignatureData"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "BitEncodingComponent",
+                "Key": "signature",
+                "Value": [
+                    "Hash"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreateRESTRequestComponent",
+                "Key": "CreateHttpRequest",
+                "Value": [
+                    "RequestPath"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertMethodComponent",
+                "Key": "InsertMethod",
+                "Value": [
+                    "Method"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "AddQueryComponent",
+                "Key": "AddQuery",
+                "Value": [
+                    "leverage"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "KEY",
+                "Value": [
+                    "apiKey"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "SIGN",
+                "Value": [
+                    "signature"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertHeaderComponent",
+                "Key": "Timestamp",
+                "Value": [
+                    "timestamp"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertAcceptComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "InsertContentTypeComponent",
+                "Key": "application/json",
+                "Value": [],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "CreatePostMessageComponent",
+                "Key": "StreamWriter",
+                "Value": [
+                    "payload"
+                ],
+                "ValueType": "Component"
+            },
+            {
+                "Type": "RegisterAuthActionComponent",
+                "Key": "RegisterAuth",
+                "Value": [
+                    "KEY",
+                    "SIGN",
+                    "Timestamp"
+                ],
+                "ValueType": "Component"
+            }
+        ],
+        "Workflow": [
+            "CreateHttpRequest",
+            "InsertMethod",
+            "InsertAcceptComponent",
+            "AddQuery",
+            "RegisterAuth"
+        ]
+    }
+}

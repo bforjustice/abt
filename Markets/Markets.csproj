@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{2A3702E5-DF55-4943-95C5-6A458B38646E}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Markets</RootNamespace>
+    <AssemblyName>Markets</AssemblyName>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+    <OutputPath>..\bin\$(SolutionName)\$(Configuration)\</OutputPath>
+    <IntermediateOutputPath>..\Temp\$(Configuration)\$(ProjectGuid)\</IntermediateOutputPath>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.IdentityModel.Logging">
+      <HintPath>..\packages\Microsoft.IdentityModel.Logging.6.9.0\lib\net461\Microsoft.IdentityModel.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.IdentityModel.Tokens">
+      <HintPath>..\packages\Microsoft.IdentityModel.Tokens.6.9.0\lib\net461\Microsoft.IdentityModel.Tokens.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controls\EmptyRequestControl.cs" />
+    <Compile Include="Controls\RequestControlBase.cs" />
+    <Compile Include="Controls\RequestControls\GateIORequestControl.cs" />
+    <Compile Include="Controls\RequestControls\MXCRequestControl.cs" />
+    <Compile Include="Controls\RequestControls\BitZRequestControl.cs" />
+    <Compile Include="Controls\RequestControls\FTXRequestControl.cs" />
+    <Compile Include="Controls\RequestControls\BybitRequestControl.cs" />
+    <Compile Include="Controls\RequestControls\BitgetRequestControl.cs" />
+    <Compile Include="Controls\RequestControls\ZBGRequestControl.cs" />
+    <Compile Include="Controls\RequestControls\OKExRequestControl.cs" />
+    <Compile Include="Controls\RequestControls\HuobiRequestControl.cs" />
+    <Compile Include="Controls\RequestControls\BinanceRequestControl.cs" />
+    <Compile Include="Controls\EmptyResponseControl.cs" />
+    <Compile Include="Controls\ResponseControlBase.cs" />
+    <Compile Include="Controls\ResponseControls\GateIOResponseControl.cs" />
+    <Compile Include="Controls\ResponseControls\MXCResponseControl.cs" />
+    <Compile Include="Controls\ResponseControls\BitZResponseControl.cs" />
+    <Compile Include="Controls\ResponseControls\FTXResponseControl.cs" />
+    <Compile Include="Controls\ResponseControls\BybitResponseControl.cs" />
+    <Compile Include="Controls\ResponseControls\BitgetResponseControl.cs" />
+    <Compile Include="Controls\ResponseControls\ZBGResponseControl.cs" />
+    <Compile Include="Controls\ResponseControls\OKExResponseControl.cs" />
+    <Compile Include="Controls\ResponseControls\HuobiResponseControl.cs" />
+    <Compile Include="Controls\ResponseControls\BinanceResponseControl.cs" />
+    <Compile Include="Converters\CoinSymbolConverter.cs" />
+    <Compile Include="Factories\RequestFactory.cs" />
+    <Compile Include="Interfaces\ILeveragePublisher.cs" />
+    <Compile Include="Interfaces\IOrderInfoPublisher.cs" />
+    <Compile Include="Interfaces\IOrderInfoSubscriber.cs" />
+    <Compile Include="Interfaces\IPositionPublisher.cs" />
+    <Compile Include="Interfaces\IBalancePublisher.cs" />
+    <Compile Include="Interfaces\ILeverageSubscriber.cs" />
+    <Compile Include="Interfaces\IPositionSubscriber.cs" />
+    <Compile Include="Interfaces\IOrderbookPublisher.cs" />
+    <Compile Include="Interfaces\IBalanceSubscriber.cs" />
+    <Compile Include="Interfaces\IOrderbookSubscriber.cs" />
+    <Compile Include="Interfaces\IRequestFactory.cs" />
+    <Compile Include="Interfaces\IMarket.cs" />
+    <Compile Include="Interfaces\ITickerPublisher.cs" />
+    <Compile Include="Interfaces\ITickerSubscriber.cs" />
+    <Compile Include="MarketFactory.cs" />
+    <Compile Include="DataManager\Data.cs" />
+    <Compile Include="DataManager\DataManager.cs" />
+    <Compile Include="Market.cs" />
+    <Compile Include="Interfaces\IOrderBookRequest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{63541ed1-f391-4717-8eb2-04f15ff9a4a3}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Communication\Communication.csproj">
+      <Project>{9fff4c02-c5e6-4ee3-85f3-11eba917dc3b}</Project>
+      <Name>Communication</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Configuration\Configuration.csproj">
+      <Project>{76981af5-a2fc-49b0-b18b-f8de3f5ce63e}</Project>
+      <Name>Configuration</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataModels\DataModels.csproj">
+      <Project>{15b2a08d-4007-4f8a-aa8d-2eea639efd84}</Project>
+      <Name>DataModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogTrace\LogTrace.csproj">
+      <Project>{48f97d5f-6d64-4b02-9128-9175d2e986fa}</Project>
+      <Name>LogTrace</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MessageBuilders\MessageBuilders.csproj">
+      <Project>{DDF7E85A-9FE3-498F-ACD1-83B097518F72}</Project>
+      <Name>MessageBuilders</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TidGenerators\TidGenerators.csproj">
+      <Project>{8ee5ca9f-d798-4b89-ba15-d2711414fd64}</Project>
+      <Name>TidGenerators</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

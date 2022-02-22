@@ -1,0 +1,32 @@
+﻿namespace Configuration
+{
+    public enum COIN_MARKET { BINANCE = 0, HUOBI, OKEX, BYBIT, BITGET, FTX, BITZ, MXC, GATEIO, ZBG }
+
+    public enum COIN_TYPE { BTC = 0, ETH, LTC, BCH, LINK, XTZ } // 코인 종류
+
+    public enum ORDER_SIDE { buy = 0, sell, none }
+
+    public enum ORDER_DIRECTION { OPEN = 0, CLOSE }
+
+    public enum ORDER_TYPE { limit = 0, market }
+
+    public enum PENDING_TYPE { UNKNOWN = -1, COMPLETE, PARTIAL, FULL, CANCELED, CANCEL_AND_REORDER, NEW }
+
+    public enum TRADING_TYPE { TRADING = 0, HANDLE_PENDING }
+
+    public enum POSITION_SIDE { LONG = 0, SHORT }
+
+    public enum POSITION_TYPE { CROSS = 0, ONEWAY }
+
+    public enum ORDERBOOK_SIDE { BID = 0, ASK }
+
+    public enum MARKET_STATE { NORMAL, SATTLE_FUNDING_FEE, TRADING, RECOVERY, EMPTY }
+
+    public enum REQUEST_METHOD { GET = 0, POST, DELETE }
+
+    public enum REQUEST_STATE { NORMAL = 0, EXPIRED, CHUNK_INVAILD, INVAILD, UNKNOWN, EMPTY, INVAILD_SOCKET, ERROR }
+
+    public enum REQUEST_TYPE { NONE, ORDERBOOK, GET_BALANCE, GET_POSITION, GET_TICKER, SET_LEVERAGE, CANCEL_ORDER, PLACE_ORDER, OPEN_ORDER, SUBSCRIBE, CONNECT_SERVER }
+
+    public enum DATA_SOURCE { WEBSOCKET, REST }
+}
